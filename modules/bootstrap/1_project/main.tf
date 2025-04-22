@@ -14,6 +14,7 @@ resource "random_integer" "x" {
 resource "random_pet" "x" {
   length = 1
 }
+
 resource "google_project" "x" {
   name            = "${random_string.x.id}${random_integer.x.id}-${random_pet.x.id}"
   project_id      = "${random_string.x.id}${random_integer.x.id}-${random_pet.x.id}"

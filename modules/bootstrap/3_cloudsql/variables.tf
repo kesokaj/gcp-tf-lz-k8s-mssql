@@ -5,3 +5,12 @@ variable "project_id" {
 variable "alias" {
   type = string
 }
+
+variable "subnets" {
+  type = list(any)
+}
+
+variable "network" {
+  type = string
+  
+}

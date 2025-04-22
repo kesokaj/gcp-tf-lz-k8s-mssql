@@ -2,10 +2,14 @@
 
 ````
 ## roles needed
-roles/orgpolicy.policyAdmin
-roles/resourcemanager.organizationAdmin
-roles/billing.user
+### organization
+roles/resourcemanager.organizationViewer
+roles/browser (resourcemanager.folders.list/get)
+### on folder
+roles/owner
+roles/resourcemanager.folderAdmin
 roles/resourcemanager.projectCreator
+roles/billing.user
 
 
 install gcloud-sdk https://cloud.google.com/sdk/docs/install-sdk#installing_the_latest_version
