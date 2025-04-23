@@ -21,3 +21,7 @@ output "alias_id" {
 output "org_id" {
   value = google_project.x.org_id
 }
+
+output "min_sa" {
+  value = google_service_account.minimal_sa.email
+}

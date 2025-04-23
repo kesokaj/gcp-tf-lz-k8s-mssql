@@ -2,7 +2,9 @@ module "project" {
   source = "./modules/bootstrap/1_project"
   billing_id = var.billing_id
   org_id = var.org_id
-  org_policy_list = var.org_policy_list
+  folder_id = var.folder_id
+  department = var.department
+  environment = var.environment
   service_list = var.service_list
 }
 
@@ -23,6 +25,9 @@ module "cloudsql" {
   source = "./modules/bootstrap/3_cloudsql"
   project_id = module.project.project_id
   alias = module.project.alias
+  alias_id = module.project.alias_id
+  root_password = var.root_password
+  region = var.region
   subnets = module.vpc.subnet_id
   network = module.vpc.vpc_id
 }
@@ -32,8 +37,12 @@ module "gke" {
   source = "./modules/bootstrap/4_gke"
   project_id = module.project.project_id
   alias = module.project.alias
+  alias_id = module.project.alias_id
+  region = var.region
   subnets = module.vpc.subnet_id
-  network = module.vpc.vpc_id  
+  subnets_all = module.vpc.subnet_all
+  network = module.vpc.vpc_id
+  gke_sa = module.project.min_sa
 }
 
 module "post" {
@@ -41,4 +50,6 @@ module "post" {
   source = "./modules/bootstrap/5_post"
   project_id = module.project.project_id
   alias = module.project.alias
+  alias_id = module.project.alias_id
+  region = var.region
 }

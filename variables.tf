@@ -6,6 +6,31 @@ variable "org_id" {
   type = string
 }
 
+variable "folder_id" {
+  type = string
+}
+
+variable "region" {
+  type = string
+  default = "europe-north1"
+}
+
+variable "root_password" {
+  type = string
+  default = "Passw0rd123!"
+}
+
+variable "department" {
+  type = string
+  default = "billiant"
+}
+
+variable "environment" {
+  type = string
+  default = "development"
+  
+}
+
 variable "firewall_config" {
   type = map(any)
   description = "Firewall rules in VPC"
@@ -113,105 +138,17 @@ variable "vpc_config" {
   type        = map(any)
   description = "Regions for VPC Subnets to be created"
   default = {
-    # "us-central1" : {
-    #   "vpc_subnet_cidr" : "10.1.0.0/22"
-    #   "secondary_ranges" :{
-    #     "psc" : "10.1.4.0/26",        
-    #     "glproxy" : "10.1.5.0/25",
-    #     "rmproxy" : "10.1.5.128/25",
-    #     "pnat" : "10.1.6.0/24",       
-    #     "services" : "10.1.16.0/20",
-    #     "pods" : "10.1.128.0/17",              
-    #   }
-    # },
-    "europe-west1" : {
-      "vpc_subnet_cidr" : "10.2.0.0/22"
-      "secondary_ranges" :{
-        "psc" : "10.2.4.0/26",        
-        "glproxy" : "10.2.5.0/25",
-        "rmproxy" : "10.2.5.128/25",
-        "pnat" : "10.2.6.0/24",       
-        "services" : "10.2.16.0/20",
-        "pods" : "10.2.128.0/17", 
-      }      
-    },
     "europe-north1" : {
-      "vpc_subnet_cidr" : "10.3.0.0/22",
+      "vpc_subnet_cidr" : "10.1.0.0/22"
       "secondary_ranges" :{
-        "psc" : "10.3.4.0/26",        
-        "glproxy" : "10.3.5.0/25",
-        "rmproxy" : "10.3.5.128/25",
-        "pnat" : "10.3.6.0/24",
-        "services" : "10.3.16.0/20",
-        "pods" : "10.3.128.0/17", 
-      }      
-    },
-    # "asia-east1" : {
-    #   "vpc_subnet_cidr" : "10.4.0.0/22"
-    #   "secondary_ranges" :{
-    #     "psc" : "10.4.4.0/26",        
-    #     "glproxy" : "10.4.5.0/25",
-    #     "rmproxy" : "10.4.5.128/25",
-    #     "pnat" : "10.4.6.0/24",       
-    #     "services" : "10.4.16.0/20",
-    #     "pods" : "10.4.128.0/17", 
-    #   }      
-    # },
-    "europe-west4" : {
-      "vpc_subnet_cidr" : "10.5.0.0/22"
-      "secondary_ranges" :{
-        "psc" : "10.5.4.0/26",        
-        "glproxy" : "10.5.5.0/25",
-        "rmproxy" : "10.5.5.128/25",
-        "pnat" :  "10.5.6.0/24",
-        "services" : "10.5.16.0/20",
-        "pods" : "10.5.128.0/17", 
-      }      
-    },
-    # "australia-southeast1" : {
-    #   "vpc_subnet_cidr" : "10.6.0.0/22"
-    #   "secondary_ranges" :{
-    #     "psc" : "10.6.4.0/26",        
-    #     "glproxy" : "10.6.5.0/25",
-    #     "rmproxy" : "10.6.5.128/25",
-    #     "pnat" :  "10.6.6.0/24",
-    #     "services" : "10.6.16.0/20",
-    #     "pods" : "10.6.128.0/17", 
-    #   }      
-    # },
-    # "africa-south1" : {
-    #   "vpc_subnet_cidr" : "10.7.0.0/22"
-    #   "secondary_ranges" :{
-    #     "psc" : "10.7.4.0/26",        
-    #     "glproxy" : "10.7.5.0/25",
-    #     "rmproxy" : "10.7.5.128/25",
-    #     "pnat" :  "10.7.6.0/24",
-    #     "services" : "10.7.16.0/20",
-    #     "pods" : "10.7.128.0/17", 
-    #   }      
-    # },
-    # "southamerica-east1" : {
-    #   "vpc_subnet_cidr" : "10.8.0.0/22"
-    #   "secondary_ranges" :{
-    #     "psc" : "10.8.4.0/26",        
-    #     "glproxy" : "10.8.5.0/25",
-    #     "rmproxy" : "10.8.5.128/25",
-    #     "pnat" :  "10.8.6.0/24",
-    #     "services" : "10.8.16.0/20",
-    #     "pods" : "10.8.128.0/17", 
-    #   }      
-    # },
-    "europe-north2" : {
-      "vpc_subnet_cidr" : "10.9.0.0/22"
-      "secondary_ranges" :{
-        "psc" : "10.9.4.0/26",        
-        "glproxy" : "10.9.5.0/25",
-        "rmproxy" : "10.9.5.128/25",
-        "pnat" :  "10.9.6.0/24",
-        "services" : "10.9.16.0/20",
-        "pods" : "10.9.128.0/17", 
-      }      
-    }           
+        "psc" : "10.1.4.0/26",        
+        "glproxy" : "10.1.5.0/25",
+        "rmproxy" : "10.1.5.128/25",
+        "pnat" : "10.1.6.0/24",       
+        "services" : "10.1.16.0/20",
+        "pods" : "10.1.128.0/17",              
+      }
+    }
   }
 }
 
@@ -235,28 +172,6 @@ variable "peer_allocation" {
   type = string
   description = "Peering network for different services a /20 will be used"
   default = "10.100.0.0"
-}
-
-variable "org_policy_list" {
-  type = list(any)
-  default = [
-    "constraints/compute.requireOsLogin",  # Enforces OS Login on Compute Engine VMs for improved security
-    "constraints/compute.requireShieldedVm",  # Requires the use of Shielded VMs for enhanced VM security
-    "constraints/compute.trustedImageProjects",  # Defines a list of trusted projects for VM images
-    "constraints/compute.vmExternalIpAccess",  # Controls external IP access for Compute Engine VMs
-    "constraints/compute.disableInternetNetworkEndpointGroup",  # Disables the creation of internet-facing Network Endpoint Groups
-    "constraints/iam.disableServiceAccountKeyCreation",  # Prevents the creation of service account keys
-    "constraints/iam.disableServiceAccountCreation",  # Prevents the creation of service accounts
-    "constraints/compute.disableNestedVirtualization",  # Disables nested virtualization on Compute Engine VMs
-    "constraints/cloudfunctions.requireVPCConnector",  # Requires Cloud Functions to use VPC connectors for network access
-    "constraints/iam.allowedPolicyMemberDomains",  # Restricts the allowed domains for IAM policy members
-    "constraints/storage.uniformBucketLevelAccess",  # Enforces uniform bucket-level access for Cloud Storage buckets
-    "constraints/sql.restrictAuthorizedNetworks",  # Restricts authorized networks for Cloud SQL instances
-    "constraints/compute.disableSerialPortLogging",  # Disables serial port logging for Compute Engine VMs
-    "constraints/compute.disableSerialPortAccess",  # Disables serial port access for Compute Engine VMs
-    "constraints/compute.vmCanIpForward",  # Controls IP forwarding for Compute Engine VMs
-    "constraints/compute.restrictProtocolForwardingCreationForTypes"  # Restricts the creation of protocol forwarding rules for specific VM types
-  ]
 }
 
 variable "service_list" {
@@ -307,7 +222,8 @@ variable "service_list" {
     "recommender.googleapis.com",
     "cloudasset.googleapis.com",
     "maintenance.googleapis.com",
-    "serviceusage.googleapis.com"
+    "serviceusage.googleapis.com",
+    "container.googleapis.com"
   ]
 }
 

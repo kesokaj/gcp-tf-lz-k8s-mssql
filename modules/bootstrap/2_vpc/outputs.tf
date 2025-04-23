@@ -6,6 +6,10 @@ output "vpc_id" {
   value = google_compute_network.x.id
 }
 
+output "subnet_all" {
+  value = values(google_compute_subnetwork.x)[*]
+}
+
 output "subnet" {
   value = values(google_compute_subnetwork.x)[*].name
 }

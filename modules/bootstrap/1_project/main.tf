@@ -19,8 +19,13 @@ resource "google_project" "x" {
   name            = "${random_string.x.id}${random_integer.x.id}-${random_pet.x.id}"
   project_id      = "${random_string.x.id}${random_integer.x.id}-${random_pet.x.id}"
   billing_account = var.billing_id
-  org_id          = var.org_id
+  #org_id          = var.org_id
+  folder_id       = var.folder_id
   deletion_policy = "DELETE"
+  labels = {
+    "department" = var.department
+    "environment" = var.environment
+  }
 }
 
 resource "google_project_service" "x" {
@@ -29,19 +34,6 @@ resource "google_project_service" "x" {
   service                    = each.value
   disable_on_destroy         = false
   disable_dependent_services = false
-}
-
-resource "google_project_organization_policy" "x" {
-  depends_on = [
-    google_project_service.x
-  ]
-  for_each = toset(var.org_policy_list)
-  project    = google_project.x.project_id
-  constraint = each.value
-
-  restore_policy {
-    default = true
-  }
 }
 
 resource "google_service_account" "minimal_sa" {
@@ -71,7 +63,8 @@ resource "google_project_iam_member" "minimal_sa_role" {
     "roles/cloudtrace.agent",
     "roles/cloudsql.client",
     "roles/cloudprofiler.agent",
-    "roles/storage.objectViewer"
+    "roles/storage.objectViewer",
+    "roles/container.defaultNodeServiceAccount"
   ])
   role = each.key
   member = "serviceAccount:${google_service_account.minimal_sa.email}"
