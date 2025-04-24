@@ -5,12 +5,11 @@
 ### organization
 roles/resourcemanager.organizationViewer
 roles/browser (resourcemanager.folders.list/get)
+roles/billing.user
 ### on folder
 roles/owner
 roles/resourcemanager.folderAdmin
 roles/resourcemanager.projectCreator
-roles/billing.user
-
 
 install gcloud-sdk https://cloud.google.com/sdk/docs/install-sdk#installing_the_latest_version
 
